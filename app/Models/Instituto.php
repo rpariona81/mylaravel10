@@ -8,7 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Instituto extends Model
 {
     use HasFactory;
+
     protected $table = 't_institutos';
+
+    protected $fillable = [
+        'cod_mod',
+        'instituto',
+        'es_licenciado',
+        'rm_licenciamiento',
+        'es_idex',
+        'codgeo',
+        'd_dpto',
+        'd_prov',
+        'd_dist',
+        'created_by',
+        'updated_by'
+    ];
 
 	public static function getCronogramaInstitutos($region_id = NULL)
 	{
@@ -44,5 +59,9 @@ class Instituto extends Model
 
 		return $data;
 	}
+
+    public function region(){
+        return $this->belongsTo(Region::class);
+    }
 
 }

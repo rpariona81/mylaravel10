@@ -483,4 +483,9 @@ class User extends Authenticatable
             return FALSE;
         }
     }
+
+    public function role(){
+        return $this
+            ->belongsTo(Role::class);
+    }
 }

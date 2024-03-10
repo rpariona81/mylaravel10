@@ -102,4 +102,10 @@ class Menu extends Model
         //$model = Menu::leftjoin('t_menu_role', ('id', $registro['id']);
     }
 
+    public function roles(){
+        return $this
+            ->belongsToMany(Role::class, 't_roles_menus');
+            //->belongsToMany('App\Models\Menu', 't_menu_role', 'menu_id', 'role_id');
+    }
+
 }

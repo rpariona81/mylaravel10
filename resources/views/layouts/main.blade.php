@@ -85,10 +85,16 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="#" class="dropdown-item notify-item">
+                            {{-- <a href="#" class="dropdown-item notify-item">
                                 <i class="mdi mdi-logout-variant"></i>
                                 <span>Cerrar sesión</span>
-                            </a>
+                            </a> --}}
+                            <form method="POST" action="{{ route('salir') }}">
+                                @csrf
+                                <a onclick="$(this).closest('form').submit()" title="Salir" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-logout-variant"></i><span>Cerrar sesión</span>
+                                </a>
+                            </form>
                         </div>
                     </li>
                 </ul>

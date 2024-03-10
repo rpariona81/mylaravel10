@@ -10,12 +10,29 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     //
+    //     $users = User::getUsersRoles();
+
+    //     return view('admin.users.index', compact('users'));
+    // }
+
+    public function index(Request $request)
     {
         //
-        $users = User::getUsersRoles();
+        $role_select = $request->input('role_select');
+		$role_Value = isset($role_select) ? $role_select : null;
 
-        return view('admin.users.index', compact('users'));
+        $status_select = $request->input('status_select');
+		$status_Value = isset($status_select) ? $status_select : null;
+
+        $records = User::getUsersRoles(NULL, $role_select, $status_select);
+
+        return view('admin.users.index', ['records' => $records,'status_Value' => $status_Value, 'role_Value' => $role_Value ]);
+
+        /*$users = User::getUsersRoles();
+        return view('admin.users.index', compact('users'));*/
     }
 
     /**

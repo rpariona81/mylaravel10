@@ -22,6 +22,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function __construct()
+    {
+        return $this->middleware('auth')->except(['index']);
+    }
+
     public function index()
     {
         return view('home');

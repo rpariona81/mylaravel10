@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -53,3 +54,9 @@ Route::get('user-ban-unban/{id}/{status}', [UserController::class, 'banUnban'])-
 
 //Back-end
 
+/*Route::get('/admin', function () {
+    return view('admin/index');
+});*/
+
+Route::get('admin', [AdminController::class, 'index'])->name('admin');
+Route::post('salir', [LoginController::class, 'salir'])->name('salir');

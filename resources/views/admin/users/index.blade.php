@@ -61,7 +61,7 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($users as $key => $item)
+                                @foreach ($records as $key => $item)
                                     <tr class="align-middle">
                                         <!--<td>< ?= str_pad($item->id, 5, '0', STR_PAD_LEFT); ?></td>-->
                                         <td>{{ $item->row }}</td>

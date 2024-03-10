@@ -97,4 +97,18 @@ class Role extends Model
         return $model;
     }
 
+    public function menus()
+    {
+        return $this
+            ->belongsToMany(Menu::class, 't_roles_menus', 'menu_id', 'role_id');
+        //->belongsToMany('App\Models\Menu', 't_menu_role', 'menu_id', 'role_id');
+    }
+
+    public function users()
+    {
+        return $this
+            ->belongsToMany(User::class)->get();
+        //->belongsToMany('App\Models\Menu', 't_menu_role', 'menu_id', 'role_id');
+    }
+
 }
