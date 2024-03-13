@@ -6,69 +6,38 @@
 
         <!-- start page title -->
         <!-- <div class="row">
-                                                                              <div class="col-12">
-                                                                               <div class="page-title-box">
-                                                                                <div class="page-title-right">
-                                                                                 <ol class="m-0 breadcrumb">
-                                                                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Uplon</a></li>
-                                                                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                                                                  <li class="breadcrumb-item active">Data Tables</li>
-                                                                                 </ol>
-                                                                                </div>
-                                                                                <h4 class="page-title">Control de usuarios</h4>
-                                                                               </div>
-                                                                              </div>
-                                                                             </div> -->
+                              <div class="col-12">
+                               <div class="page-title-box">
+                                <div class="page-title-right">
+                                 <ol class="m-0 breadcrumb">
+                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Uplon</a></li>
+                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                                  <li class="breadcrumb-item active">Data Tables</li>
+                                 </ol>
+                                </div>
+                                <h4 class="page-title">Control de usuarios</h4>
+                               </div>
+                              </div>
+                             </div> -->
         <!-- <div class="row mt-3">
-                                                                              <div class="col-12">
-                                                                               <div class="card-header bg-light border">
-                                                                                <h4 class="page-title">Control de usuarios</h4>
-                                                                               </div>
-                                                                              </div>
-                                                                             </div> -->
+                              <div class="col-12">
+                               <div class="card-header bg-light border">
+                                <h4 class="page-title">Control de usuarios</h4>
+                               </div>
+                              </div>
+                             </div> -->
         <!-- end page title -->
 
         <div class="row">
             <div class="col-12">
                 <div class="card-header bg-light border mt-3">
-                    <h4 class="page-title">Control de usuarios</h4>
+                    <h4 class="page-title">Institutos</h4>
                 </div>
                 <div class="card-box">
 
-                    <form action="" method="POST" class="form-horizontal" onsubmit="window.location.reload()">
-                        @csrf
-                        <div class="col-md-9 col-lg-9 mx-auto">
-                            <div class="mb-3">
-                                <div class="input-group mb-1">
-                                    <select id="role_select" class="form-control" name="role_select">
-                                        @foreach ($roles as $key => $role)
-                                            <option value="{{ $key }}">
-                                                {{ $role }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    &nbsp;
-                                    <select id="status_select" class="form-control" name="status_select">
-                                        @foreach ($condiciones as $key => $condicion)
-                                            <option value="{{ $key }}">
-                                                {{ $condicion }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    &nbsp;
-                                    <button class="btn btn-info pull-right font-weight-medium mb-0" type="submit">
-                                        <i class="fa fa-search"></i>&nbsp;Filtrar
-                                    </button>
-                                    &nbsp;
-                                    <a class="btn btn-danger" href="{{ route('admin.users') }}">Limpiar filtro</a>
-                                    &nbsp;
-                                    <a class="btn waves-effect waves-light btn-success pull-right hidden-sm-down"
-                                        data-toggle="tooltip" href={{ route('admin.users.create') }}>Nuevo
-                                        usuario&nbsp;&nbsp;<i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+
+
+
                     <div class="p-0 table-responsive">
                         <table id="datatable-buttons" class="table table-hover table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -81,12 +50,14 @@
                                 <tr class="table-info">
                                     <!--<th class="font-weight-bold">Id</th>-->
                                     <th class="font-weight-bold">#</th>
-                                    <th class="font-weight-bold">Usuario</th>
-                                    <th class="font-weight-bold">Email</th>
-                                    <th class="font-weight-bold">Rol</th>
-                                    <th class="font-weight-bold">Celular</th>
-                                    <th class="font-weight-bold">Condición</th>
-                                    <th class="font-weight-bold">Email</th>
+                                    <th class="font-weight-bold">Región</th>
+                                    <th class="font-weight-bold">Cod Mod</th>
+                                    <th class="font-weight-bold">Instituto</th>
+
+                                    <th class="font-weight-bold">Licenciamiento</th>
+                                    <th class="font-weight-bold">Res. Licenciamiento</th>
+                                    <th class="font-weight-bold">Fech. Licenciamiento</th>
+                                    <th class="font-weight-bold"># Programas</th>
                                     <th class="font-weight-bold">Última modif.</th>
                                     <th class="font-weight-bold">Opciones</th>
                                 </tr>
@@ -97,36 +68,33 @@
                                     <tr class="align-middle">
                                         <!--<td>< ?= str_pad($item->id, 5, '0', STR_PAD_LEFT); ?></td>-->
                                         <td>{{ $item->row }}</td>
-                                        <td>{{ $item->display_name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->rolename }}</td>
+                                        <td>{{ $item->region }}</td>
+                                        <td>{{ $item->cod_mod }}</td>
+                                        <td>{{ $item->instituto }}</td>
                                         <td class="text-center">
-                                            {{ $item->mobile }}</td>
-                                        <td class="text-center"> @if ($item->status)
-                                            <span class="text-white border badge bg-info">{{ $item->userflag }}</span>
-                                        @else
-                                            <span class="text-white border badge bg-secondary">{{ $item->userflag }}</span>
-                                        @endif</td>
-                                        <td class="text-center">{{ $item->email }}</td>
+                                            {{ $item->es_licenciado }}</td>
+                                        <td>{{ $item->rm_licenciamiento }}</td>
+                                        <td class="text-center">{{ $item->fecha_rm_licenciamiento }}</td>
+                                        <td class="text-center">{{ $item->cant_programs }}</td>
                                         <td>
                                             {{ $item->updated_at ? $item->updated_at->diffForHumans() : ($item->updated_at_role ? $item->updated_at_role->diffForHumans() : null) }}
                                         </td>
                                         <td class="text-center">
-
+                                            @if ($item->status)
+                                                <span class="text-white border badge bg-info">{{ $item->userflag }}</span>
+                                            @else
+                                                <span class="text-white border badge bg-danger">{{ $item->userflag }}
+                                                </span>
+                                            @endif
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 @if ($item->lock == 1)
                                                 @else
                                                     @if ($item->status)
-                                                        <a href="{{ route('admin.users.banUnban', ['id' => $item->id, 'status' => 0]) }}"
-                                                            class="btn btn-outline-danger btn-sm display-inline" data-toggle="tooltip" data-placement="bottom" title="Desactivar"><i class="fa fa-eye-slash"></i></a>
-                                                            &nbsp;
-                                                        <a class="btn btn-outline-warning btn-sm" data-toggle="tooltip"
-                                                            data-placement="bottom" title="Editar"
-                                                            href="{{ route('admin.users.edit', ['id' => $item->id]) }}"><i
-                                                                class="fa fa-edit"></i></a>
+                                                        <a href="{{ route('user.banUnban', ['id' => $item->id, 'status' => 0]) }}"
+                                                            class="badge bg-danger">Block</a>
                                                     @else
-                                                        <a href="{{ route('admin.users.banUnban', ['id' => $item->id, 'status' => 1]) }}"
-                                                            class="btn btn-outline-success btn-sm display-inline" data-toggle="tooltip" data-placement="bottom" title="Activar"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('user.banUnban', ['id' => $item->id, 'status' => 1]) }}"
+                                                            class="badge bg-info">Unblock</a>
                                                     @endif
                                                 @endif
                                             </div>

@@ -33,7 +33,7 @@
             <div class="col-md-6 col-xl-3">
                 <div class="card-box tilebox-one">
                     <i class="icon-paypal float-right m-0 h2 text-muted"></i>
-                    <h6 class="text-muted text-uppercase mt-0">Institutos Licenciados</h6>
+                    <h6 class="text-muted text-uppercase mt-0">IEST Licenciados</h6>
                     <h3 class="my-3">$<span data-plugin="counterup">{{ $institutos }}</span></h3>
                     <span class="badge badge-danger mr-1"> -29% </span> <span class="text-muted">From previous period</span>
                 </div>

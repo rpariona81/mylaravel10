@@ -13,6 +13,8 @@ class InstitutoController extends Controller
     public function index()
     {
         //
+        $records = Instituto::getCronogramaInstitutos();
+        return view('admin.institutos.index', ['records' => $records]);
     }
 
     /**

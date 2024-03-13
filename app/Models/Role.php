@@ -54,7 +54,7 @@ class Role extends Model
     {
         $opcionesRole = array();
         $opcionesRole[NULL] = 'Seleccione rol';
-        $lista = Role::where('id','>=',$role_level)->select('id', 'rolename')->get();
+        $lista = Role::where('id', '>=', $role_level)->select('id', 'rolename')->get();
         foreach ($lista as $registro) {
             $opcionesRole[$registro->id] = $registro->rolename;
         }
@@ -106,9 +106,9 @@ class Role extends Model
 
     public function users()
     {
+        /*return $this
+            ->belongsToMany(User::class)->get();*/
         return $this
-            ->belongsToMany(User::class)->get();
-        //->belongsToMany('App\Models\Menu', 't_menu_role', 'menu_id', 'role_id');
+            ->belongsToMany('App\Models\Role', 't_role_user', 'user_id', 'role_id');
     }
-
 }

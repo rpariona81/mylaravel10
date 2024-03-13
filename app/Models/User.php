@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -251,7 +254,7 @@ class User extends Authenticatable
         try {
             $model = new User();
 
-            $role = Role_Eloquent::findOrFail($request['role_id']);    //code...
+            $role = Role::findOrFail($request['role_id']);    //code...
 
             /*if ($model) {
 				$model->fill($data);
@@ -313,7 +316,7 @@ class User extends Authenticatable
             //$model->fill($data);
             //$model->save($data);
 
-            $role = Role_Eloquent::findOrFail($request['role_id']);    //code...
+            $role = Role::findOrFail($request['role_id']);    //code...
 
             if ($model) {
                 $model->fill($data);
@@ -407,7 +410,7 @@ class User extends Authenticatable
                 if (password_verify($pass, $userValidate['password'])) {
                     $role_user = RoleUser::where('user_id',  $userValidate['id'])->first();
                     //print_r($role_user);
-                    $role = Role_Eloquent::findOrFail($role_user['role_id']);
+                    $role = Role::findOrFail($role_user['role_id']);
                     if ($role) {
                         if ($role->status) {
                             $arrayLogin = array(
@@ -482,6 +485,13 @@ class User extends Authenticatable
             //throw $th;
             return FALSE;
         }
+    }
+
+    protected $with = 'roles';
+
+    public function roles(){
+        return $this
+            ->belongsToMany('App\Models\Role', 't_role_user', 'user_id', 'role_id');
     }
 
     public function role(){

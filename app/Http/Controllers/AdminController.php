@@ -17,8 +17,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        //if (!$request->ajax()) return redirect('/login');
+
         $users = User::where('status',1)->count();
         $institutos = Instituto::where('estado',2)->count();
         $portalesweb = PortalWebLineal::get_cifras();

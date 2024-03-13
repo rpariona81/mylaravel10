@@ -67,7 +67,7 @@
                             <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image"
                                 class="rounded-circle">
                             <span
-                                class="d-none d-sm-inline-block ml-1 font-weight-medium">Usuario y Rol</span>
+                                class="d-none d-sm-inline-block ml-1 font-weight-medium">{{Session::get('display_name')}} ({{Session::get('rolename')}})</span>
                             <i
                                 class="mdi mdi-chevron-down d-none d-sm-inline-block"></i><!--<i class="fa fa-user fa-fw"></i>-->
                         </a>
@@ -140,13 +140,13 @@
                         </li>
 
                         <li class="menu">
-                            <a href="#">
+                            <a href="{{ route('admin.users')}}">
                                 <i class="mdi mdi-format-underline"></i>Usuarios
                             </a>
                         </li>
 
                         <li class="menu">
-                            <a href="#">
+                            <a href="{{ route('admin.institutos')}}">
                                 <i class="mdi mdi-black-mesa"></i>Institutos
                             </a>
                         </li>

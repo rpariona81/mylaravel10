@@ -20,6 +20,16 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    //https://laravel.com/docs/9.x/events
+    /**
+     * The subscriber classes to register.
+     *
+     * @var array
+     */
+    protected $subscribe = [
+        \App\Listeners\UserEventSuscriber::class,
+    ];
+
     /**
      * Register any events for your application.
      */
