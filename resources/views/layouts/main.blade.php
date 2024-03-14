@@ -10,6 +10,11 @@
     <meta content="Responsive bootstrap 4 admin template" name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
 
@@ -23,17 +28,13 @@
         id="bootstrap-united-stylesheet" />
 
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/apphorizontal.min.css') }}" rel="stylesheet" type="text/css"
-        id="app-stylesheet" />
+    <link href="{{ asset('assets/css/apphorizontal.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
 
     <!-- Table datatable css -->
-    <link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables/select.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -67,7 +68,8 @@
                             <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image"
                                 class="rounded-circle">
                             <span
-                                class="d-none d-sm-inline-block ml-1 font-weight-medium">{{Session::get('display_name')}} ({{Session::get('rolename')}})</span>
+                                class="d-none d-sm-inline-block ml-1 font-weight-medium">{{ Session::get('display_name') }}
+                                ({{ Session::get('rolename') }})</span>
                             <i
                                 class="mdi mdi-chevron-down d-none d-sm-inline-block"></i><!--<i class="fa fa-user fa-fw"></i>-->
                         </a>
@@ -89,9 +91,10 @@
                                 <i class="mdi mdi-logout-variant"></i>
                                 <span>Cerrar sesión</span>
                             </a> --}}
-                            <form method="POST" action="{{ route('salir') }}">
+                            <form method="POST" action="{{ route('admin.salir') }}">
                                 @csrf
-                                <a onclick="$(this).closest('form').submit()" title="Salir" class="dropdown-item notify-item">
+                                <a onclick="$(this).closest('form').submit()" title="Salir"
+                                    class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout-variant"></i><span>Cerrar sesión</span>
                                 </a>
                             </form>
@@ -140,13 +143,13 @@
                         </li>
 
                         <li class="menu">
-                            <a href="{{ route('admin.users')}}">
+                            <a href="{{ route('admin.users') }}">
                                 <i class="mdi mdi-format-underline"></i>Usuarios
                             </a>
                         </li>
 
                         <li class="menu">
-                            <a href="{{ route('admin.institutos')}}">
+                            <a href="{{ route('admin.institutos') }}">
                                 <i class="mdi mdi-black-mesa"></i>Institutos
                             </a>
                         </li>

@@ -61,7 +61,7 @@ Route::post('/register', function () {
 });*/
 
 //Route::get('admin', [AdminController::class, 'index'])->name('admin');
-Route::post('salir', [LoginController::class, 'salir'])->name('salir');
+//Route::post('salir', [LoginController::class, 'salir'])->name('salir');
 
 Route::group(['prefix' => 'admin','as' => 'admin.','middleware'=>['auth']],function(){
     Route::get('/', [AdminController::class, 'index']);

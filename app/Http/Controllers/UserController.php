@@ -20,9 +20,15 @@ class UserController extends Controller
     //     return view('admin.users.index', compact('users'));
     // }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         //
+
         $data['role_select'] = $request->input('role_select');
         $data['role_Value'] = isset($role_select) ? $role_select : null;
 
